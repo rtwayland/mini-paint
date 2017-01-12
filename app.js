@@ -1,39 +1,49 @@
 $(document).ready(function() {
-  var $boxes = $('.box');
-  var $colors = 'white green red blue yellow'
-  var $color = 'white';
+    var $boxes = $('.box');
+    var $colors = 'white green red blue yellow'
+    var $color = 'white';
+    var isDown = false;
+    $(document).mousedown(function(event) {
+        isDown = true;
+    });
+    $(document).mouseup(function(event) {
+        isDown = false;
+    });
+    $boxes.hover(function(event) {
+        if (isDown) {
+            $(this).addClass($color);
+        }
+    });
+    $boxes.click(function(event) {
+      $(this).addClass($color);
+    });
 
+    $boxes.dblclick(function(event) {
+        $(this).removeClass($colors);
+    });
 
-  $boxes.click(function(event) {
-    $(this).addClass($color);
-  });
+    $('#reset').click(function(event) {
+        $boxes.removeClass($colors);
+    });
 
-  $boxes.dblclick(function(event) {
-    $(this).removeClass($colors);
-  });
+    $('#red').click(function(event) {
+        $color = 'red';
+    });
 
-  $('#reset').click(function(event) {
-    $boxes.removeClass($colors);
-  });
+    $('#blue').click(function(event) {
+        $color = 'blue';
+    });
 
-  $('#red').click(function(event) {
-    $color = 'red';
-  });
+    $('#green').click(function(event) {
+        $color = 'green';
+    });
 
-  $('#blue').click(function(event) {
-    $color = 'blue';
-  });
+    $('#yellow').click(function(event) {
+        $color = 'yellow';
+    });
 
-  $('#green').click(function(event) {
-    $color = 'green';
-  });
-
-  $('#yellow').click(function(event) {
-    $color = 'yellow';
-  });
-
-  $('#white').click(function(event) {
-    $color = 'white';
-  });
+    $('#white').click(function(event) {
+        $color = 'white';
+    });
 
 });
